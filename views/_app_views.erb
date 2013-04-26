@@ -1,0 +1,38 @@
+<h2><%= uid.capitalize %></h2>
+<div class="accordion" id="accordion_<%= uid %>">
+  <% apps.each_with_index do |app, index| %>
+     
+    <div class="accordion-group">
+      <div class="accordion-heading">
+        <a class="accordion-toggle" data-toggle="collapse" data-app_name='<%= app['name'] %>' data-parent="#accordion_<%= uid %>" href="#collapse_<%= uid %>_<%= index %>">
+          <span><%= app['name'] %></span>
+          <span class="info-block">
+            <span class='label'><%= app['dynos'] %></span>
+            <span class='label label-info'><%= app['workers'] %></span>
+            <span class='label label-important'><%= (app['slug_size'].to_i / 1048576).round(2) %> MB</span>
+            <span class='label <%= app['region'] == 'us' ? 'label-success' : 'label-warning' %>'><%= app['region'].upcase %></span>
+          </span>
+        </a>
+      </div>
+      <div id="collapse_<%= uid %>_<%= index %>" class="accordion-body collapse ">
+        <div class="accordion-inner">
+          <div class="btn-toolbar">
+            <span class="btn"><a target='_blank' href="<%= app['web_url'] %>">Open App</a></span>
+            <span class="btn"><a target='_blank' href="https://dashboard.heroku.com/apps/<%= app['name'] %>/resources">Resources</a></span>
+            <span class="btn"><a target='_blank' href="https://dashboard.heroku.com/apps/<%= app['name'] %>/activity">Activity</a></span>
+            <span class="btn"><a target='_blank' href="https://dashboard.heroku.com/apps/<%= app['name'] %>/collaborators">Collaborators</a></span>
+            <span class="btn"><a target='_blank' href="https://dashboard.heroku.com/apps/<%= app['name'] %>/settings">Settings</a></span>
+
+          </div>
+          <div class='well well-small'>
+            <!-- Put more app info in here -->
+          </div>
+          <div id='<%= app['name'] %>_other_data'>
+            <img src='img/preloader.gif'/>                  
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+</div>

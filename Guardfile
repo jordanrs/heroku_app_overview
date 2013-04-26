@@ -3,5 +3,5 @@
 
 guard 'shotgun' do
   watch('website.rb')
-  watch('views/index.haml')
+  watch(%r{^views/.+\.erb$})
 end

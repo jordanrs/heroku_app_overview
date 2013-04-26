@@ -8,8 +8,9 @@ use Rack::Auth::Basic, "Restricted Area" do |username, password|
 end
 
 get '/' do  
-  @apps = heroku_api('apps')
-  sort_apps(@apps)
+  apps = heroku_api('apps')
+  sort_apps(apps)
+  @no_dynos, @has_dynos = apps.partition{|app| app['dynos'].zero? && app['workers'].zero? }
   
   erb :index
 end

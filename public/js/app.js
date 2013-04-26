@@ -1,9 +1,3 @@
-var get_data = function(app_name){
-  $.get('/app_info/' + app_name, function(r){
-    $('#' + app_name +'_other_data').html(r)
-  }); 
-}
-
 $('document').ready(function(){
   var clicked_apps = [];
   $('.accordion-toggle').click(function(e){
@@ -17,3 +11,9 @@ $('document').ready(function(){
   })
   
 })
+
+var get_data = function(app_name){
+  $.get('/app_info/' + app_name, function(r){
+    $('#' + app_name +'_other_data').html(r)
+  }); 
+}

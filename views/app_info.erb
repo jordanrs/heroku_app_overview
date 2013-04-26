@@ -1,12 +1,12 @@
 <h2>Add-ons</h2>
 
-  <table class='table table-striped'>
-    <tr>
-     <td>Name</td>
-     <td>Description</td>
-     <td>Cost</td>
-     <td>Add-on Page</td>
-    </tr>
+<table class='table table-striped'>
+  <tr>
+   <td>Name</td>
+   <td>Description</td>
+   <td>Cost</td>
+   <td>Add-on Page</td>
+  </tr>
   <% @addons.each do |addon| %>
     <% puts addon['price']['cents'] %>
     <tr <%= 'class="error"' if addon['price']['cents'] != 0  %>>
@@ -16,23 +16,20 @@
      <td><a href="<%= addon['sso_url'] %>" class="btn btn-primary">Info</a></td>
     </tr>
   <% end %>
-  </table>
-
+</table>
 
 <h2>Collaborators</h2>
-  <table class='table table-striped'>
-    <tr>
-     <td>Email</td>
-     <td>Access</td>
-     <td>Role</td>
-    </tr>
+<table class='table table-striped'>
+  <tr>
+    <td>Email</td>
+    <td>Access</td>
+    <td>Role</td>
+  </tr>
   <% @colabs.each do |colab| %>
-   <tr <%= 'class="warning"' if colab['role'] == 'owner'  %>>
-    <td><%= colab['email'] %></td>
-    <td><%= colab['access'] %></td>
-    <td ><%= colab['role'] %></td>
-   </tr>
+    <tr <%= 'class="warning"' if colab['role'] == 'owner'  %>>
+      <td><%= colab['email'] %></td>
+      <td><%= colab['access'] %></td>
+      <td ><%= colab['role'] %></td>
+    </tr>
   <% end %>
-  </table>
-
-
+</table>
