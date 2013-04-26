@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+    "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>Page title</title>
+  </head>
+  <link rel="stylesheet" href="/css/bootstrap.css" type="text/css" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="/css/app.css" type="text/css" title="no title" charset="utf-8">
+  <body>
+    
+    <div class="container">
+      <h1>Heroku Apps Overview</h1>
+      <div class="accordion" id="accordion2">
+        <% @apps.each_with_index do |app, index| %>
+
+          <div class="accordion-group">
+            <div class="accordion-heading">
+              <a class="accordion-toggle" data-toggle="collapse" data-app_name='<%= app['name'] %>' data-parent="#accordion2" href="#collapse_<%= index %>">
+                <span><%= app['name'] %></span>
+                <span class="info-block">
+                  <span class='label'><%= app['dynos'] %></span>
+                  <span class='label label-info'><%= app['workers'] %></span>
+                  <span class='label label-important'><%= (app['slug_size'].to_i / 1048576).round(2) %> MB</span>
+                  <span class='label <%= app['region'] == 'us' ? 'label-success' : 'label-warning' %>'><%= app['region'].upcase %></span>
+                </span>
+              </a>
+            </div>
+            <div id="collapse_<%= index %>" class="accordion-body collapse ">
+              <div class="accordion-inner">
+                <div class="btn-toolbar">
+                  <span class="btn"><a target='_blank' href="<%= app['web_url'] %>">Open App</a></span>
+                  <span class="btn"><a target='_blank' href="https://dashboard.heroku.com/apps/<%= app['name'] %>/resources">Resources</a></span>
+                  <span class="btn"><a target='_blank' href="https://dashboard.heroku.com/apps/<%= app['name'] %>/activity">Activity</a></span>
+                  <span class="btn"><a target='_blank' href="https://dashboard.heroku.com/apps/<%= app['name'] %>/collaborators">Collaborators</a></span>
+                  <span class="btn"><a target='_blank' href="https://dashboard.heroku.com/apps/<%= app['name'] %>/settings">Settings</a></span>
+
+                </div>
+                <div class='well well-small'>
+                  
+                  
+                </div>
+                <div id='<%= app['name'] %>_other_data'>
+                  <img src='img/preloader.gif'/>                  
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+  
+        
+ 
+        <% end %>
+      </div>
+    </div>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>

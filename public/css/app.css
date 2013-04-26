@@ -1,0 +1,12 @@
+a:hover {
+  text-decoration: none;
+}
+
+.info-block{
+  float: right;
+}
+
+.info-block .label-important{
+  width: 55px;
+  text-align: center;
+}
