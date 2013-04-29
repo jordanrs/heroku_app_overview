@@ -10,3 +10,7 @@ a:hover {
   width: 55px;
   text-align: center;
 }
+
+.preloader-container {
+  text-align:center;
+}

@@ -24,11 +24,49 @@
             <span class="btn"><a target='_blank' href="https://dashboard.heroku.com/apps/<%= app['name'] %>/settings">Settings</a></span>
 
           </div>
-          <div class='well well-small'>
-            <!-- Put more app info in here -->
-          </div>
+
+            <h2>Info</h2>
+            <table class='table table-striped'>
+              <tr>
+                <td>Dynos</td>
+                <td><%= app['dynos'] %></td>
+              </tr>
+              <tr>
+                <td>Workers</td>
+                <td><%= app['workers'] %></td>
+              </tr>
+              <tr>
+                <td>Repo Size</td>
+                <td><%= (app['slug_size'].to_i / 1048576).round(2) %> MB</td>
+              </tr>
+              <tr>
+                <td>Stack</td>
+                <td><%= app['stack']%> </td>
+              </tr>
+               <tr>
+                <td>Region</td>
+                <td><%= app['region']%> </td>
+              </tr>
+               <tr>
+                <td>Git URL</td>
+                <td><%= app['git_url']%> </td>
+              </tr>
+               <tr>
+                <td>Created</td>
+                <td><%= app['created_at']%> </td>
+              </tr>
+               <tr>
+                <td>Last Updated</td>
+                <td><%= app['updated_at']%> </td>
+              </tr>
+            </table>
+            <%= puts app %>
+            
           <div id='<%= app['name'] %>_other_data'>
-            <img src='img/preloader.gif'/>                  
+            <div class="preloader-container">
+              <img  class='preloader' src='img/preloader.gif'/> 
+            </div>
+                             
           </div>
         </div>
       </div>

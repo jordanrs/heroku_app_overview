@@ -8,7 +8,6 @@
    <td>Add-on Page</td>
   </tr>
   <% @addons.each do |addon| %>
-    <% puts addon['price']['cents'] %>
     <tr <%= 'class="error"' if addon['price']['cents'] != 0  %>>
      <td><%= addon['name'] %></td>
      <td><%= addon['description'] %></td>
